@@ -28,3 +28,5 @@ int main(void)
     }
     printf("%i\n", quantidade);
 }
+
+// Resivei o Arquivo 
