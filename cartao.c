@@ -8,7 +8,7 @@ int multiplicar (long num_cartao);
 int somar (long num_cartao);
 int valido (int resultado_algoritmo,int dois_primeiros_digitos, int numeros_de_digitos);
 
-int main (void)
+int main(void)
 {
 long num_cartao = get_long ("Número: ");
 int numeros_de_digitos = num_digitos (num_cartao);
