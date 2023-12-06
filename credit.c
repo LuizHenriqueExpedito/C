@@ -3,7 +3,7 @@
 #include <stdio.h>
 
 int num_digitos (long num_cartao);
-int dois_primeiros (long num_cartao, int numeros_de_digitos);
+int dois_primeiros ( long num_cartao, int numeros_de_digitos);
 int multiplicar (long num_cartao);
 int somar (long num_cartao);
 int valido (int resultado_algoritmo,int dois_primeiros_digitos, int numeros_de_digitos);
@@ -21,7 +21,7 @@ int resultado_algoritmo = multiplicacao + soma;
 valido (resultado_algoritmo, dois_primeiros_digitos, numeros_de_digitos);
 }
 
-// FUNÇÕES
+// FUNÇÕES...
 int num_digitos (long num_cartao)
 {
 int num_digitos = 0;
