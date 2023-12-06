@@ -1,7 +1,7 @@
 #include <cs50.h>
 #include <math.h>
 #include <stdio.h>
-
+// Validation_credit_card...
 int num_digitos (long num_cartao);
 int dois_primeiros ( long num_cartao, int numeros_de_digitos);
 int multiplicar (long num_cartao);
