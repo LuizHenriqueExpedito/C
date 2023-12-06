@@ -7,7 +7,7 @@ int main(void)
 
    do
     {
-       n = get_int (" N :");
+       n = get_int (" N : ");
     }
 
      while ( n < 1 || n > 8);
