@@ -1,6 +1,6 @@
 #include <cs50.h>
 #include <stdio.h>
-
+//Hashtag pyramid
 int main(void)
 {
     int height;
