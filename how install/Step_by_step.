@@ -1,0 +1,121 @@
+*************************************** LINK : SITE DA WEB_  https://dev.to/jazzdev/setting-up-cs50-library-locally-in-visual-studio-code-5d87
+
+
+
+Taiwo Jazz ( Autor)                           
+Posted on 14 de jul. • Updated on 9 de set.    
+
+
+1
+Setting Up CS50 Library Locally in Visual Studio Code
+#
+computerscience
+#
+cs50
+#
+c
+#
+programming
+havard cs50
+
+The CS50 library is an essential tool for working on programming assignments and projects in the CS50 course offered by Harvard University. By setting up the CS50 library locally in Visual Studio Code (VS Code), you can conveniently write and compile your CS50 programs directly in your favorite code editor. In this guide, we will walk through the steps to install and configure the CS50 library in VS Code.
+
+Prerequisites
+Before we begin, ensure you have the following prerequisites:
+
+Visual Studio Code installed on your machine. If you haven't installed it yet, you can download it from the official website.
+
+Step 1: Obtain the CS50 Library Source Code
+To get started, you need to download the CS50 library source code from the CS50 GitHub repository. Here's how you can do it:
+
+Visit the CS50 library repository on GitHub.
+
+Click on the Code button and choose the Download ZIP option to download the source code as a ZIP file.
+
+Extract the contents of the ZIP file to a suitable location on your computer.
+
+Step 2: Install the CS50 Library
+Now that we have the CS50 library source code, let's proceed with the installation:
+
+Open a terminal or command prompt.
+
+Navigate to the directory where you extracted the CS50 library source code.
+
+Run the following command to compile and install the CS50 library:
+sudo make install
+This command will compile the library and install it on your system. You may be prompted to enter your system password during the installation process.
+
+Wait for the installation to complete. Once finished, the CS50 library will be installed and available for use.
+Note that in order to make the CS50 library globally available, it needs to be located in system directories where the linker can find it without specifying the library path explicitly. The installation process takes care of this for you.
+
+When you use sudo make install, the installation process defined in the Makefile is responsible for moving the necessary files to the appropriate directories. This typically includes libraries, header files, and any other relevant files needed for the library to be accessible globally.
+
+If, for some reason, the installation process specified in the Makefile fails to move the library files to the correct directories, you may need to manually move them to make the library globally available.
+
+To confirm if the library files are in the appropriate directories before attempting to move them manually, you can use the following commands to check the presence of the files:
+
+Check the static library file
+ls /usr/local/lib/libcs50.a
+Check the shared library file
+ls /usr/local/lib/libcs50.so
+If both commands return a valid output with the file paths, it means that the library files are already in the correct directories, and there is no need to move them manually.
+
+However, if the commands do not return any output or show an error indicating that the files do not exist, it suggests that the library files were not installed in the expected locations. In such cases, you may need to manually move the files to the appropriate directories.
+
+o successfully execute the sudo cp commands, ensure that you are in the directory where the libcs50.so and libcs50.a files are located. Prior to running the commands, navigate to the libcs50-11.0.2 directory, which you downloaded from the CS50 GitHub repository. Once you are in the correct directory, proceed with running the following command:
+sudo cp build/lib/libcs50.so /usr/local/lib/
+sudo cp build/lib/libcs50.a /usr/local/lib/
+This will copy the CS50 library files to the system's library directory.
+
+Update the shared library cache: After moving the library files, update the shared library cache by running the following command:
+sudo ldconfig
+This command refreshes the system's shared library cache and makes the CS50 library accessible to the linker.
+
+Verify the library availability: You can check if the CS50 library is now globally available by running the command:
+ldconfig -p | grep cs50
+This command will search the library cache for the CS50 library and display its information if it is found. If the library is listed, it means that it is now available globally.
+
+Screnshot
+
+Step 3: Install gcc and make (if not already installed)
+The make utility is necessary for compiling CS50 programs using the provided Makefile. If you don't have make installed on your system, you can install it by running the appropriate command for your operating system.
+
+For Ubuntu or Debian-based systems:
+sudo apt-get install build-essential
+For macOS:
+xcode-select --install
+For Windows:
+Install the Windows Subsystem for Linux (WSL) and follow the instructions for Ubuntu or Debian-based systems.
+
+If everything goes well, you should be able to see the version of the packages installed using gcc --version, g++ --version and make --version
+
+Version Screenshot
+
+By following these steps, you have effectively set up the CS50 library locally in Visual Studio Code. You'll be able to write, compile, and run CS50 programs directly within VS Code, providing a seamless development experience.
+
+Remember, when compiling your CS50 programs, you should use the following command:
+make hello LDLIBS=-lcs50
+To avoid specifying LDLIBS=-lcs50 every time you compile your code, follow the steps below:
+In your VS Code, open your terminal. Make sure you are in your project folder, then enter the below command:
+nano Makefile
+Copy the code below and paste it using Ctrl + Shift + V on linux and windows and Cmd + Shift + V on Mac
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror -std=c11
+LDLIBS = -lcs50
+
+# Rule to compile a file into an executable
+%: %.c
+    $(CC) $(CFLAGS) $< -o $@ $(LDLIBS)
+Save the changes by pressing Ctrl + O, and then press Enter to confirm.
+
+Exit the text editor by pressing Ctrl + X.
+
+Now you can use make hello to compile you file.
+
+VSCode Terminal Image
+
+That's it! You are now ready to start coding with the CS50 library in Visual Studio Code.
+
+Feel free to refer to the official CS50 documentation and resources for more information on using the library and exploring the available functions and features.
+
+Enjoy your learning journey with CS50! Happy coding!

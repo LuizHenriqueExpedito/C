@@ -12,9 +12,9 @@ int main(void)
 
      while ( n < 1 || n > 8);
 
-    for (i= 1; i <= n; i++) {
+    for ( i= 1; i <= n; i++) {
 
-        for (j = 1; j <= n - i; j++) {
+        for ( j = 1; j <= n - i; j++) {
             printf(" ");
         }
 
