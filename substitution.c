@@ -3,7 +3,7 @@
 #include <string.h>
 #include <ctype.h>
 
-int main (int argc, string argv[])
+int main ( int argc, string argv[])
 {
     //Check the number of arguments in the command line.
 if (argc != 2)
