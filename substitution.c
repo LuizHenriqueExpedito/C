@@ -5,7 +5,7 @@
 
 int main ( int argc, string argv[])
 {
-    // Check the number of arguments in the command line.
+    // Check the number of arguments in the command line!
 if (argc != 2)
 {
     printf ("Use: ./Subistituition key\n");
