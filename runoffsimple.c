@@ -21,7 +21,7 @@ int main()
     // string mCandidatos[MAX_ELEITORES][MAX_CANDIDATOS];
     char *mCandidatos[MAX_ELEITORES][MAX_CANDIDATOS];
 
-    // Coletar os votos.
+    // Coletar os votos .
     for (int i = 0; i < MAX_ELEITORES; i++)
     {
         printf("Eleitor %d: Digite o nome de %d candidatos em ordem de sua preferência:\n", i + 1, MAX_CANDIDATOS);
