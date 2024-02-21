@@ -1,11 +1,10 @@
 #include <stdio.h>
-// #include <cs50.h>
 #include <string.h>
 #include <stdlib.h>
 
 #define MAX_CANDIDATOS 3
 #define MAX_ELEITORES 3
-#define MAX_NOME 100 // Tamanho máximo do nome.
+#define MAX_NOME 100 
 
 int main()
 {
@@ -127,7 +126,7 @@ int main()
         // Mostra quem vai ser eliminado.
         // MenosPreferido é aquele que teve menos Aparições na terceira coluna da matrix.
         char *menosPreferido = "";
-        int votosDoMenosPreferido = 1000000; // aqui usa um número grande qualquer, só para usar nas comparações a seguir.
+        int votosDoMenosPreferido = 1000000;
 
         if (foraAlice != 0)
         {
@@ -157,7 +156,7 @@ int main()
             }
         }
 
-        // Esse código acima sempre termina com a variável votosDoMenosPreferido contendo o valor do menos votado. Então, basta comparar cada um dos candidatos com esse valor. Veja abaixo:
+        // Apontaroes em C.
 
         if (foraBob == votosDoMenosPreferido)
         {
@@ -175,30 +174,8 @@ int main()
             printf("\nMenos Preferido na Terceira Coluna: Charlie\n ");
         }
 
-        // O código abaixo tem erro. Foi comentado por mim. O erro é jogar , por exemplo, a alice nas comparações, sem checar se foraAlice == 0.
-        // como foraAlice ==0, isso atrapalha a lógica abaixo. Ou seja, não dá para determinar que bob ou charlei é vencedor, se alice tem zero voto e entra na comparação abaixo.
-        // Ela pode ter zero voto na 3a coluna da matriz, mas isso não significa que é a menos preferida na 3a coluna.
+        //MenosPreferido não participa da contagem!
 
-        /* if (foraBob != 0 && ((foraBob <= foraAlice)) && (foraBob <= foraCharlie))
-         {
-             menosPreferido = "Bob";
-             printf("\nMenos Preferido na Terceira Coluna: Bob\n ");
-         }
-         else if (foraAlice != 0 && foraAlice <= foraBob && foraAlice <= foraCharlie)
-         {
-             menosPreferido = "Alice";
-             printf("\nMenos Preferido na Terceira Coluna: Alice\n");
-         }
-         else if (foraCharlie != 0 && foraCharlie <= foraBob && foraCharlie <= foraAlice)
-         {
-             menosPreferido = "Charlie";
-             printf("\nMenos Preferido na Terceira Coluna: Charlie\n");
-         }
-         */
-        // Aqui acima troquei o sinal '<' por '<=', porque se existir empate entre os menos preferidos, o programa eliminará um deles mesmo assim.
-
-        // Passar o voto do eliminado para o próximo preferido para não perder o voto.
-        //
         int votosAlice2 = votosAlice1;
         int votosBob2 = votosBob1;
         int votosCharlie2 = votosCharlie1;
@@ -228,29 +205,7 @@ int main()
             }
         }
 
-        // Vamos tentar achar o vencedor do segundo turno
-        //  votosbob1 maior que alice e charlie etc...
-
-        /*   if (votosAlice2 > votosBob2 && votosAlice2 > votosCharlie2)
-           {
-               printf("\nVencedor da Eleição: Alice");
-           }
-           else if (votosBob2 > votosAlice1 && votosBob2 > votosCharlie2)
-           {
-               printf("Vencedor da Eleição: Bob");
-           }
-           else if (votosCharlie2 > votosAlice2 && votosCharlie1 > votosBob2)
-           {
-               printf("Vencedor da Eleição: Charlie");
-           }
-           else
-           {
-               printf("\nNão foi Possível definir um vencedor\n");
-           }
-
-           */
-
-        // Esse código abaixo tem uma lógica mais adequada para o segundo turno, em relação ao código comentado acima:
+        // Zerar os votos de quem foi elimidado para não atrapalhar o funcionamento do programa!
         if (strcmp("Alice", menosPreferido) == 0)
         {
             votosAlice2 = 0; // Para descartar os votos de Alice que já são inválidos. Assim Alice sai da disputa.
@@ -266,6 +221,7 @@ int main()
 
         int somaTotalVotosValidosNoTurnoCorrente = votosAlice2 + votosBob2 + votosCharlie2;
         //Nessa  parte os votos do menosPreferido estará valendo zero"...
+        
         printf("Total da soma de votos: %d\n", somaTotalVotosValidosNoTurnoCorrente);
 
         if (votosBob2 > (somaTotalVotosValidosNoTurnoCorrente / 2))
