@@ -1,5 +1,5 @@
 # CS50_Harvard
-##Exercises from Harvard's CS50: Introduction to Computer Science course.
+## Exercises from Harvard's CS50: Introduction to Computer Science course.
 
 ***Course description:***
 
